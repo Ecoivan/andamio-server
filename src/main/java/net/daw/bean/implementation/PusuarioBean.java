@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2016 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
- * sisane-server: Helps you to develop easily AJAX web applications 
+ * andamio-server: Helps you to develop easily AJAX web applications 
  *                   by copying and modifying this Java Server.
  *
- * Sources at https://github.com/rafaelaznar/sisane-server
+ * Sources at https://github.com/rafaelaznar/andamio-server
  * 
- * sisane-server is distributed under the MIT License (MIT)
+ * andamio-server is distributed under the MIT License (MIT)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -53,15 +53,8 @@ public class PusuarioBean implements GenericBean {
     @Expose
     private String password;
     @Expose
-    private String direccion;
-    @Expose
-    private String ciudad;
-    @Expose
-    private String codigopostal;
-    @Expose
-    private String provincia;
-    @Expose
-    private String pais;
+    private String firma;
+
     @Expose
     private String email;
     @Expose
@@ -71,11 +64,6 @@ public class PusuarioBean implements GenericBean {
     private Integer id_tipousuario = 0;
     @Expose(deserialize = false)
     private TipousuarioBean obj_tipousuario = null;
-
-    @Expose(serialize = false)
-    private Integer id_medico = 0;
-    @Expose(deserialize = false)
-    private MedicoBean obj_medico = null;
 
     public PusuarioBean() {
     }
@@ -140,44 +128,12 @@ public class PusuarioBean implements GenericBean {
         this.password = password;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getFirma() {
+        return firma;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getCodigopostal() {
-        return codigopostal;
-    }
-
-    public void setCodigopostal(String codigopostal) {
-        this.codigopostal = codigopostal;
-    }
-
-    public String getProvincia() {
-        return provincia;
-    }
-
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setFirma(String firma) {
+        this.firma = firma;
     }
 
     public String getEmail() {
@@ -212,22 +168,6 @@ public class PusuarioBean implements GenericBean {
         this.obj_tipousuario = obj_tipousuario;
     }
 
-    public Integer getId_medico() {
-        return id_medico;
-    }
-
-    public void setId_medico(Integer id_medico) {
-        this.id_medico = id_medico;
-    }
-
-    public MedicoBean getObj_medico() {
-        return obj_medico;
-    }
-
-    public void setObj_medico(MedicoBean obj_medico) {
-        this.obj_medico = obj_medico;
-    }
-
     @Override
     public String getColumns() {
         String strColumns = "";
@@ -238,15 +178,10 @@ public class PusuarioBean implements GenericBean {
         strColumns += "segundoapellido,";
         strColumns += "login,";
         strColumns += "password,";
-        strColumns += "direccion,";
-        strColumns += "ciudad,";
-        strColumns += "codigopostal,";
-        strColumns += "provincia,";
-        strColumns += "pais,";
+        strColumns += "firma,";
         strColumns += "email,";
         strColumns += "telefono,";
-        strColumns += "id_tipousuario,";
-        strColumns += "id_medico";
+        strColumns += "id_tipousuario";
         return strColumns;
     }
 
@@ -260,15 +195,10 @@ public class PusuarioBean implements GenericBean {
         strColumns += EncodingUtilHelper.quotate(segundoapellido) + ",";
         strColumns += EncodingUtilHelper.quotate(login) + ",";
         strColumns += EncodingUtilHelper.quotate(password) + ",";
-        strColumns += EncodingUtilHelper.quotate(direccion) + ",";
-        strColumns += EncodingUtilHelper.quotate(ciudad) + ",";
-        strColumns += EncodingUtilHelper.quotate(codigopostal) + ",";
-        strColumns += EncodingUtilHelper.quotate(provincia) + ",";
-        strColumns += EncodingUtilHelper.quotate(pais) + ",";
+        strColumns += EncodingUtilHelper.quotate(firma) + ",";
         strColumns += EncodingUtilHelper.quotate(email) + ",";
         strColumns += EncodingUtilHelper.quotate(telefono) + ",";
-        strColumns += id_tipousuario + ",";
-        strColumns += id_medico;
+        strColumns += id_tipousuario;
         return strColumns;
     }
 
@@ -281,15 +211,10 @@ public class PusuarioBean implements GenericBean {
         strPairs += "segundoapellido=" + EncodingUtilHelper.quotate(segundoapellido) + ",";
         strPairs += "login=" + EncodingUtilHelper.quotate(login) + ",";
         strPairs += "password=" + EncodingUtilHelper.quotate(password) + ",";
-        strPairs += "direccion=" + EncodingUtilHelper.quotate(direccion) + ",";
-        strPairs += "ciudad=" + EncodingUtilHelper.quotate(ciudad) + ",";
-        strPairs += "codigopostal=" + EncodingUtilHelper.quotate(codigopostal) + ",";
-        strPairs += "provincia=" + EncodingUtilHelper.quotate(provincia) + ",";
-        strPairs += "pais=" + EncodingUtilHelper.quotate(pais) + ",";
+        strPairs += "firma=" + EncodingUtilHelper.quotate(firma) + ",";
         strPairs += "email=" + EncodingUtilHelper.quotate(email) + ",";
         strPairs += "telefono=" + EncodingUtilHelper.quotate(telefono) + ",";
-        strPairs += "id_tipousuario=" + id_tipousuario + ",";
-        strPairs += "id_medico=" + id_medico;
+        strPairs += "id_tipousuario=" + id_tipousuario;
         return strPairs;
     }
 
@@ -302,14 +227,10 @@ public class PusuarioBean implements GenericBean {
         this.setSegundoapellido(oResultSet.getString("segundoapellido"));
         this.setLogin(oResultSet.getString("login"));
         this.setPassword(oResultSet.getString("password"));
-        this.setDireccion(oResultSet.getString("direccion"));
-        this.setCiudad(oResultSet.getString("ciudad"));
-        this.setCodigopostal(oResultSet.getString("codigopostal"));
-        this.setProvincia(oResultSet.getString("provincia"));
-        this.setPais(oResultSet.getString("pais"));
+        this.setFirma(oResultSet.getString("firma"));
         this.setEmail(oResultSet.getString("email"));
         this.setTelefono(oResultSet.getString("telefono"));
-        
+
         if (expand > 0) {
             TipousuarioBean oTipousuarioBean = new TipousuarioBean();
             TipousuarioDao oTipousuarioDao = new TipousuarioDao(pooledConnection, oPusuarioBean_security);
@@ -318,16 +239,6 @@ public class PusuarioBean implements GenericBean {
             this.setObj_tipousuario(oTipousuarioBean);
         } else {
             this.setId_tipousuario(oResultSet.getInt("id_tipousuario"));
-        }
-
-        if (expand > 0) {
-            MedicoBean oMedicoBean = new MedicoBean();
-            MedicoDao oMedicoDao = new MedicoDao(pooledConnection, oPusuarioBean_security);
-            oMedicoBean.setId(oResultSet.getInt("id_medico"));
-            oMedicoBean = oMedicoDao.get(oMedicoBean, expand - 1);
-            this.setObj_medico(oMedicoBean);
-        } else {
-            this.setId_medico(oResultSet.getInt("id_medico"));
         }
 
         return this;

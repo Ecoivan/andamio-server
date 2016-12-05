@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2016 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
- * sisane-server: Helps you to develop easily AJAX web applications 
+ * andamio-server: Helps you to develop easily AJAX web applications 
  *                   by copying and modifying this Java Server.
  *
- * Sources at https://github.com/rafaelaznar/sisane-server
+ * Sources at https://github.com/rafaelaznar/andamio-server
  * 
- * sisane-server is distributed under the MIT License (MIT)
+ * andamio-server is distributed under the MIT License (MIT)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,17 +39,17 @@ import net.daw.control.json;
 public class Log4j {
 
     public static void infoLog(String strMessage) {
-        Logger log = Logger.getLogger("sisane-server");
+        Logger log = Logger.getLogger("andamio-server");
         log.info(strMessage);
     }
 
     public static void errorLog(String strMessage, Exception e) {
-        Logger log = Logger.getLogger("sisane-server");
+        Logger log = Logger.getLogger("andamio-server");
         log.error(strMessage, e);
     }
 
     public static void errorLog(String strMessage) {
-        Logger log = Logger.getLogger("sisane-server");
+        Logger log = Logger.getLogger("andamio-server");
         log.error(strMessage);
     }
 

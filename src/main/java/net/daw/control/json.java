@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2016 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
- * sisane-server: Helps you to develop easily AJAX web applications 
+ * andamio-server: Helps you to develop easily AJAX web applications 
  *               by copying and modifying this Java Server.
  *
- * Sources at https://github.com/rafaelaznar/sisane-server
+ * Sources at https://github.com/rafaelaznar/andamio-server
  * 
- * sisane-server is distributed under the MIT License (MIT)
+ * andamio-server is distributed under the MIT License (MIT)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -81,7 +81,7 @@ public class json extends HttpServlet {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (Exception ex) {
-                ReplyBean oReplyBean = new ReplyBean(500, "sisane-server error. Please, contact your administrator.");
+                ReplyBean oReplyBean = new ReplyBean(500, "andamio-server error. Please, contact your administrator.");
                 sendResponseJson(request, response, oReplyBean);
                 Log4j.errorLog(this.getClass().getName() + ":" + (ex.getStackTrace()[0]).getMethodName(), ex);
                 return;
@@ -98,12 +98,12 @@ public class json extends HttpServlet {
                     oDataConnectionSource = getSourceConnection();
                     oConnection = oDataConnectionSource.newConnection();
                     if (oConnection.isValid(10)) {
-                        sendResponseHtml(request, response, "sisane-server by rafael aznar", "<p>the server is up and running on " + request.getLocalName() + ":" + request.getLocalPort() + "</p><p>Database name: " + ConnectionClassHelper.getDatabaseName() + "</p><p>Database access OK</p>");
+                        sendResponseHtml(request, response, "andamio-server by rafael aznar", "<p>the server is up and running on " + request.getLocalName() + ":" + request.getLocalPort() + "</p><p>Database name: " + ConnectionClassHelper.getDatabaseName() + "</p><p>Database access OK</p>");
                     } else {
-                        sendResponseHtml(request, response, "sisane-server by rafael aznar", "<p>the server is up and running on " + request.getLocalName() + ":" + request.getLocalPort() + "</p><p>Database name: " + ConnectionClassHelper.getDatabaseName() + "</p><p>Database access timeout KO</p>");
+                        sendResponseHtml(request, response, "andamio-server by rafael aznar", "<p>the server is up and running on " + request.getLocalName() + ":" + request.getLocalPort() + "</p><p>Database name: " + ConnectionClassHelper.getDatabaseName() + "</p><p>Database access timeout KO</p>");
                     }
                 } catch (Exception ex) {
-                    sendResponseHtml(request, response, "sisane-server by rafael aznar", "the server is up and running on " + request.getLocalName() + ":" + request.getLocalPort() + "</p><p>Database name: " + ConnectionClassHelper.getDatabaseName() + "</p><p>Database access KO</p>");
+                    sendResponseHtml(request, response, "andamio-server by rafael aznar", "the server is up and running on " + request.getLocalName() + ":" + request.getLocalPort() + "</p><p>Database name: " + ConnectionClassHelper.getDatabaseName() + "</p><p>Database access KO</p>");
                 } finally {
                     if (oConnection != null) {
                         oConnection.close();
@@ -120,13 +120,13 @@ public class json extends HttpServlet {
                     ReplyBean oResult = (ReplyBean) oMethodService.invoke(oService);
                     sendResponseJson(request, response, oResult);
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-                    ReplyBean oReplyBean = new ReplyBean(500, "sisane-server error. Please, contact your administrator.");
+                    ReplyBean oReplyBean = new ReplyBean(500, "andamio-server error. Please, contact your administrator.");
                     sendResponseJson(request, response, oReplyBean);
                     Log4j.errorLog(this.getClass().getName() + ":" + (ex.getStackTrace()[0]).getMethodName(), ex);
                 }
             }
         } catch (ServletException | IOException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException ex) {
-            ReplyBean oReplyBean = new ReplyBean(500, "sisane-server error. Please, contact your administrator.");
+            ReplyBean oReplyBean = new ReplyBean(500, "andamio-server error. Please, contact your administrator.");
             sendResponseJson(request, response, oReplyBean);
             Log4j.errorLog(this.getClass().getName() + ":" + (ex.getStackTrace()[0]).getMethodName(), ex);
         }
@@ -177,6 +177,6 @@ public class json extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "sisane-server Servlet";
+        return "andamio-server Servlet";
     }// </editor-fold>
 }

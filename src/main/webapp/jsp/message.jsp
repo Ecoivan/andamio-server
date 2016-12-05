@@ -2,12 +2,12 @@
 /*
  * Copyright (c) 2016 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
- * sisane-server: Helps you to develop easily AJAX web applications 
+ * andamio-server: Helps you to develop easily AJAX web applications 
  *                   by copying and modifying this Java Server.
  *
- * Sources at https://github.com/rafaelaznar/sisane-server
+ * Sources at https://github.com/rafaelaznar/andamio-server
  * 
- * sisane-server is distributed under the MIT License (MIT)
+ * andamio-server is distributed under the MIT License (MIT)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>sisane-server</title>
+        <title>andamio-server</title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     </head>
     <body>
