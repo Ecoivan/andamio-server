@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import net.daw.bean.publicinterface.GenericBean;
+import net.daw.dao.implementation.TituloDao;
 import net.daw.dao.implementation.UsuarioDao;
 import net.daw.helper.statics.EncodingUtilHelper;
 
