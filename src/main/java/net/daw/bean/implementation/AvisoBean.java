@@ -32,6 +32,13 @@ public class AvisoBean implements GenericBean {
     private Integer id_tipousuario = 0;
     @Expose(deserialize = false)
     private TipoDocumentoBean obj_tipousuario = null;*/
+    public AvisoBean() {
+    }
+
+    public AvisoBean(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -103,8 +110,9 @@ public class AvisoBean implements GenericBean {
     @Override
     public GenericBean fill(ResultSet oResultSet, Connection pooledConnection, PusuarioBean oPuserBean_security, Integer expand) throws SQLException, Exception {
         this.setId(oResultSet.getInt("id"));
-        this.setFecha(oResultSet.getDate("fecha"));
         this.setContenido(oResultSet.getString("contenido"));
+        this.setFecha(oResultSet.getDate("fecha"));
+        this.setPrioridad(oResultSet.getInt("prioridad"));
 
         /*if (expand > 0) {
             TipousuarioBean oTipousuarioBean = new TipousuarioBean();
