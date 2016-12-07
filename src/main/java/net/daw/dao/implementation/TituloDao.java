@@ -68,8 +68,8 @@ public class TituloDao implements ViewDaoInterface<TituloBean>, TableDaoInterfac
         try {
             oResultSet = oMysql.getAllSQL(strSQL);
             while (oResultSet.next()) {
-                TituloBean oUserBean = new TituloBean();
-                arrTitulo.add((TituloBean) oUserBean.fill(oResultSet, oConnection, oPuserSecurity, expand));
+                TituloBean oTituloBean = new TituloBean();
+                arrTitulo.add((TituloBean) oTituloBean.fill(oResultSet, oConnection, oPuserSecurity, expand));
             }
             if (oResultSet != null) {
                 oResultSet.close();
@@ -87,22 +87,95 @@ public class TituloDao implements ViewDaoInterface<TituloBean>, TableDaoInterfac
 
     @Override
     public ArrayList<TituloBean> getAll(ArrayList<FilterBeanHelper> alFilter, HashMap<String, String> hmOrder, Integer expand) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.C
+
+        strSQL += SqlBuilder.buildSqlWhere(alFilter);
+        strSQL += SqlBuilder.buildSqlOrder(hmOrder);
+        ArrayList<TituloBean> arrTitulo = new ArrayList<>();
+        ResultSet oResultSet = null;
+        try {
+            oResultSet = oMysql.getAllSQL(strSQL);
+            while (oResultSet.next()) {
+                TituloBean oTituloBean = new TituloBean();
+                arrTitulo.add((TituloBean) oTituloBean.fill(oResultSet, oConnection, oPuserSecurity, expand));
+            }
+        } catch (Exception ex) {
+            Log4j.errorLog(this.getClass().getName() + ":" + (ex.getStackTrace()[0]).getMethodName(), ex);
+            throw new Exception();
+        } finally {
+            if (oResultSet != null) {
+                oResultSet.close();
+            }
+        }
+        return arrTitulo;
     }
 
     @Override
-    public TituloBean get(TituloBean oBean, Integer expand) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public TituloBean get(TituloBean oTituloBean, Integer expand) throws Exception {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        if (oTituloBean.getId() > 0) {
+            ResultSet oResultSet = null;
+            try {
+                oResultSet = oMysql.getAllSQL(strSQL + " And id= " + oTituloBean.getId() + " ");
+                Boolean empty = true;
+                while (oResultSet.next()) {
+                    oTituloBean = (TituloBean) oTituloBean.fill(oResultSet, oConnection, oPuserSecurity, expand);
+                    empty = false;
+                }
+                if (empty) {
+                    oTituloBean.setId(0);
+                }
+            } catch (Exception ex) {
+                Log4j.errorLog(this.getClass().getName() + ":" + (ex.getStackTrace()[0]).getMethodName(), ex);
+                throw new Exception();
+            } finally {
+                if (oResultSet != null) {
+                    oResultSet.close();
+                }
+            }
+        } else {
+            oTituloBean.setId(0);
+        }
+        return oTituloBean;
     }
 
     @Override
-    public Integer set(TituloBean oBean) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Integer set(TituloBean oTituloBean) throws Exception {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        Integer iResult = null;
+        try {
+            if (oTituloBean.getId() == 0) {
+                strSQL = "INSERT INTO " + strTable + " ";
+                strSQL += "(" + oTituloBean.getColumns() + ")";
+                strSQL += "VALUES(" + oTituloBean.getValues() + ")";
+                iResult = oMysql.executeInsertSQL(strSQL);
+            } else {
+                strSQL = "UPDATE " + strTable + " ";
+                strSQL += " SET " + oTituloBean.toPairs();
+                strSQL += " WHERE id=" + oTituloBean.getId();
+                iResult = oMysql.executeUpdateSQL(strSQL);
+            }
+        } catch (Exception ex) {
+            Log4j.errorLog(this.getClass().getName() + ":" + (ex.getStackTrace()[0]).getMethodName(), ex);
+            throw new Exception();
+        }
+        return iResult;
     }
 
     @Override
     public Integer remove(Integer id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        int result = 0;
+        try {
+            result = oMysql.removeOne(id, strTable);
+        } catch (Exception ex) {
+            Log4j.errorLog(this.getClass().getName() + ":" + (ex.getStackTrace()[0]).getMethodName(), ex);
+            throw new Exception();
+        }
+        return result;
     }
     
 }
