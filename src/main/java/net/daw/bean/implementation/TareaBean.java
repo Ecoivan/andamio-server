@@ -35,7 +35,6 @@ import java.sql.SQLException;
 import java.util.Date;
 import net.daw.bean.publicinterface.GenericBean;
 import net.daw.dao.implementation.UsuarioDao;
-import net.daw.dao.implementation.UsuarioDao;
 import net.daw.dao.implementation.EstadoDao;
 import net.daw.dao.implementation.PrioridadDao;
 import net.daw.dao.implementation.ValoracionDao;
