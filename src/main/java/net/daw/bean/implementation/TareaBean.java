@@ -35,11 +35,11 @@ import java.sql.SQLException;
 import java.util.Date;
 import net.daw.bean.publicinterface.GenericBean;
 import net.daw.dao.implementation.UsuarioDao;
-//import net.daw.dao.implementation.UsuarioDao;
-//import net.daw.dao.implementation.EstadoDao;
-//import net.daw.dao.implementation.PrioridadDao;
-//import net.daw.dao.implementation.ValoracionDao;
-//import net.daw.dao.implementation.ProyectoDao;
+import net.daw.dao.implementation.UsuarioDao;
+import net.daw.dao.implementation.EstadoDao;
+import net.daw.dao.implementation.PrioridadDao;
+import net.daw.dao.implementation.ValoracionDao;
+import net.daw.dao.implementation.ProyectoDao;
 import net.daw.helper.statics.EncodingUtilHelper;
 
 public class TareaBean implements GenericBean {
@@ -68,25 +68,25 @@ public class TareaBean implements GenericBean {
     @Expose(deserialize = false)
     private UsuarioBean obj_usuario = null;
 
-//    @Expose(serialize = false)
-//    private Integer id_estado = 0;
-//    @Expose(deserialize = false)
-//    private EstadoBean obj_estado = null;
-//
-//    @Expose(serialize = false)
-//    private Integer id_prioridad = 0;
-//    @Expose(deserialize = false)
-//    private PrioridadBean obj_prioridad = null;
-//
-//    @Expose(serialize = false)
-//    private Integer id_valoracion = 0;
-//    @Expose(deserialize = false)
-//    private ValoracionBean obj_valoracion = null;
-//
-//    @Expose(serialize = false)
-//    private Integer id_proyecto = 0;
-//    @Expose(deserialize = false)
-//    private ProyectoBean obj_proyecto = null;
+    @Expose(serialize = false)
+    private Integer id_estado = 0;
+    @Expose(deserialize = false)
+    private EstadoBean obj_estado = null;
+
+    @Expose(serialize = false)
+    private Integer id_prioridad = 0;
+    @Expose(deserialize = false)
+    private PrioridadBean obj_prioridad = null;
+
+    @Expose(serialize = false)
+    private Integer id_valoracion = 0;
+    @Expose(deserialize = false)
+    private ValoracionBean obj_valoracion = null;
+
+    @Expose(serialize = false)
+    private Integer id_proyecto = 0;
+    @Expose(deserialize = false)
+    private ProyectoBean obj_proyecto = null;
     
     @Expose
     private Integer completada;
@@ -186,69 +186,69 @@ public class TareaBean implements GenericBean {
         this.obj_usuario = obj_usuario;
     }
 
-//    public Integer getId_estado() {
-//        return id_estado;
-//    }
-//
-//    public void setId_estado(Integer id_estado) {
-//        this.id_estado = id_estado;
-//    }
-//
-//    public EstadoBean getObj_estado() {
-//        return obj_estado;
-//    }
-//
-//    public void setObj_estado(EstadoBean obj_estado) {
-//        this.obj_estado = obj_estado;
-//    }
-//
-//    public Integer getId_prioridad() {
-//        return id_prioridad;
-//    }
-//
-//    public void setId_prioridad(Integer id_prioridad) {
-//        this.id_prioridad = id_prioridad;
-//    }
-//
-//    public PrioridadBean getObj_prioridad() {
-//        return obj_prioridad;
-//    }
-//
-//    public void setObj_prioridad(PrioridadBean obj_prioridad) {
-//        this.obj_prioridad = obj_prioridad;
-//    }
-//
-//    public Integer getId_valoracion() {
-//        return id_valoracion;
-//    }
-//
-//    public void setId_valoracion(Integer id_valoracion) {
-//        this.id_valoracion = id_valoracion;
-//    }
-//
-//    public ValoracionBean getObj_valoracion() {
-//        return obj_valoracion;
-//    }
-//
-//    public void setObj_valoracion(ValoracionBean obj_valoracion) {
-//        this.obj_valoracion = obj_valoracion;
-//    }
-//
-//    public Integer getId_proyecto() {
-//        return id_proyecto;
-//    }
-//
-//    public void setId_proyecto(Integer id_proyecto) {
-//        this.id_proyecto = id_proyecto;
-//    }
-//
-//    public ProyectoBean getObj_proyecto() {
-//        return obj_proyecto;
-//    }
-//
-//    public void setObj_proyecto(ProyectoBean obj_proyecto) {
-//        this.obj_proyecto = obj_proyecto;
-//    }
+    public Integer getId_estado() {
+        return id_estado;
+    }
+
+    public void setId_estado(Integer id_estado) {
+        this.id_estado = id_estado;
+    }
+
+    public EstadoBean getObj_estado() {
+        return obj_estado;
+    }
+
+    public void setObj_estado(EstadoBean obj_estado) {
+        this.obj_estado = obj_estado;
+    }
+
+    public Integer getId_prioridad() {
+        return id_prioridad;
+    }
+
+    public void setId_prioridad(Integer id_prioridad) {
+        this.id_prioridad = id_prioridad;
+    }
+
+    public PrioridadBean getObj_prioridad() {
+        return obj_prioridad;
+    }
+
+    public void setObj_prioridad(PrioridadBean obj_prioridad) {
+        this.obj_prioridad = obj_prioridad;
+    }
+
+    public Integer getId_valoracion() {
+        return id_valoracion;
+    }
+
+    public void setId_valoracion(Integer id_valoracion) {
+        this.id_valoracion = id_valoracion;
+    }
+
+    public ValoracionBean getObj_valoracion() {
+        return obj_valoracion;
+    }
+
+    public void setObj_valoracion(ValoracionBean obj_valoracion) {
+        this.obj_valoracion = obj_valoracion;
+    }
+
+    public Integer getId_proyecto() {
+        return id_proyecto;
+    }
+
+    public void setId_proyecto(Integer id_proyecto) {
+        this.id_proyecto = id_proyecto;
+    }
+
+    public ProyectoBean getObj_proyecto() {
+        return obj_proyecto;
+    }
+
+    public void setObj_proyecto(ProyectoBean obj_proyecto) {
+        this.obj_proyecto = obj_proyecto;
+    }
 
     public Integer getCompletada() {
         return completada;
@@ -294,10 +294,10 @@ public class TareaBean implements GenericBean {
         strColumns += turno + ",";
         strColumns += numeroturno + ",";
         strColumns += id_usuario + ",";
-//        strColumns += id_estado + ",";
-//        strColumns += id_prioridad + ",";
-//        strColumns += id_valoracion + ",";
-//        strColumns += id_proyecto + ",";
+        strColumns += id_estado + ",";
+        strColumns += id_prioridad + ",";
+        strColumns += id_valoracion + ",";
+        strColumns += id_proyecto + ",";
         strColumns += completada;
         return strColumns;
     }
@@ -314,10 +314,10 @@ public class TareaBean implements GenericBean {
         strPairs += "turno=" + turno + ",";
         strPairs += "numeroturno=" + numeroturno + ",";
         strPairs += "id_usuario=" + id_usuario + ",";
-//        strPairs += "id_estado=" + id_estado + ",";
-//        strPairs += "id_prioridad=" + id_prioridad + ",";
-//        strPairs += "id_valoracion=" + id_valoracion + ",";
-//        strPairs += "id_proyecto=" + id_proyecto + ",";
+        strPairs += "id_estado=" + id_estado + ",";
+        strPairs += "id_prioridad=" + id_prioridad + ",";
+        strPairs += "id_valoracion=" + id_valoracion + ",";
+        strPairs += "id_proyecto=" + id_proyecto + ",";
         strPairs += "completada=" + completada;
         return strPairs;
     }
@@ -345,45 +345,45 @@ public class TareaBean implements GenericBean {
             this.setId_usuario(oResultSet.getInt("id_usuario"));
         }
 
-//        if (expand > 0) {
-//            EstadoBean oEstadoBean = new EstadoBean();
-//            EstadoDao oEstadoDao = new EstadoDao(pooledConnection, oPuserBean_security);
-//            oEstadoBean.setId(oResultSet.getInt("id_estado"));
-//            oEstadoBean = oEstadoDao.get(oEstadoBean, expand - 1);
-//            this.setObj_estado(oEstadoBean);
-//        } else {
-//            this.setId_estado(oResultSet.getInt("id_estado"));
-//        }
-//
-//        if (expand > 0) {
-//            PrioridadBean oPrioridadBean = new PrioridadBean();
-//            PrioridadDao oPrioridadDao = new PrioridadDao(pooledConnection, oPuserBean_security);
-//            oPrioridadBean.setId(oResultSet.getInt("id_prioridad"));
-//            oPrioridadBean = oPrioridadDao.get(oPrioridadBean, expand - 1);
-//            this.setObj_prioridad(oPrioridadBean);
-//        } else {
-//            this.setId_prioridad(oResultSet.getInt("id_prioridad"));
-//        }
-//
-//        if (expand > 0) {
-//            ValoracionBean oValoracionBean = new ValoracionBean();
-//            ValoracionDao oValoracionDao = new ValoracionDao(pooledConnection, oPuserBean_security);
-//            oValoracionBean.setId(oResultSet.getInt("id_valoracion"));
-//            oValoracionBean = oValoracionDao.get(oValoracionBean, expand - 1);
-//            this.setObj_valoracion(oValoracionBean);
-//        } else {
-//            this.setId_valoracion(oResultSet.getInt("id_valoracion"));
-//        }
-//
-//        if (expand > 0) {
-//            ProyectoBean oProyectoBean = new ProyectoBean();
-//            ProyectoDao oProyectoDao = new ProyectoDao(pooledConnection, oPuserBean_security);
-//            oProyectoBean.setId(oResultSet.getInt("id_proyecto"));
-//            oProyectoBean = oProyectoDao.get(oProyectoBean, expand - 1);
-//            this.setObj_proyecto(oProyectoBean);
-//        } else {
-//            this.setId_proyecto(oResultSet.getInt("id_proyecto"));
-//        }
+        if (expand > 0) {
+            EstadoBean oEstadoBean = new EstadoBean();
+            EstadoDao oEstadoDao = new EstadoDao(pooledConnection, oPuserBean_security);
+            oEstadoBean.setId(oResultSet.getInt("id_estado"));
+            oEstadoBean = oEstadoDao.get(oEstadoBean, expand - 1);
+            this.setObj_estado(oEstadoBean);
+        } else {
+            this.setId_estado(oResultSet.getInt("id_estado"));
+        }
+
+        if (expand > 0) {
+            PrioridadBean oPrioridadBean = new PrioridadBean();
+            PrioridadDao oPrioridadDao = new PrioridadDao(pooledConnection, oPuserBean_security);
+            oPrioridadBean.setId(oResultSet.getInt("id_prioridad"));
+            oPrioridadBean = oPrioridadDao.get(oPrioridadBean, expand - 1);
+            this.setObj_prioridad(oPrioridadBean);
+        } else {
+            this.setId_prioridad(oResultSet.getInt("id_prioridad"));
+        }
+
+        if (expand > 0) {
+            ValoracionBean oValoracionBean = new ValoracionBean();
+            ValoracionDao oValoracionDao = new ValoracionDao(pooledConnection, oPuserBean_security);
+            oValoracionBean.setId(oResultSet.getInt("id_valoracion"));
+            oValoracionBean = oValoracionDao.get(oValoracionBean, expand - 1);
+            this.setObj_valoracion(oValoracionBean);
+        } else {
+            this.setId_valoracion(oResultSet.getInt("id_valoracion"));
+        }
+
+        if (expand > 0) {
+            ProyectoBean oProyectoBean = new ProyectoBean();
+            ProyectoDao oProyectoDao = new ProyectoDao(pooledConnection, oPuserBean_security);
+            oProyectoBean.setId(oResultSet.getInt("id_proyecto"));
+            oProyectoBean = oProyectoDao.get(oProyectoBean, expand - 1);
+            this.setObj_proyecto(oProyectoBean);
+        } else {
+            this.setId_proyecto(oResultSet.getInt("id_proyecto"));
+        }
 
         return this;
     }
